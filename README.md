@@ -1,0 +1,2 @@
+# SplitIt
+Expense Splitting App! 
