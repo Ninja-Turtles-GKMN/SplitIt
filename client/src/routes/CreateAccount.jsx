@@ -10,9 +10,10 @@ const CreateAccount = () => {
     console.log(data);
     const username = data.get('username');
     const password = data.get('password');
+    const email = data.get('email');
 
     console.log(username, password);
-    const userBody = JSON.stringify({ username, password });
+    const userBody = JSON.stringify({ username, password, email });
 
     const post = await fetch(e.target.action, {
       method: 'POST',
@@ -23,36 +24,45 @@ const CreateAccount = () => {
   };
   return (
     <>
-      hi there delilh
-      <div id='login-body'>
-        <div id='login-form-parent'>
-          <h1>Welcome. Please create your account</h1>
-          <div>
-            <form
-              action='/api/create'
-              id='new-user-form'
-              role='form'
-              onSubmit={createUser}
-            >
-              <input
-                className='login-submit'
-                aria-label='new-username-input'
-                placeholder='username'
-                type='text'
-                name='username'
-              />
-              <input
-                className='user-submit'
-                aria-label='new-password-input'
-                placeholder='password'
-                type='password'
-                name='password'
-              />
-              <button type='submit'>Submit</button>
-            </form>
-          </div>
-          <Link to={'/login'} id='login-rdr'></Link>
-        </div>
+      <div id='standard-body'>
+        <h1>Welcome. Please create your account</h1>
+        <form
+          action='/api/create'
+          id='standard-form'
+          className='standard-form'
+          role='form'
+          onSubmit={createUser}
+        >
+          <input
+            className='standard-input'
+            aria-label='new-username-input'
+            placeholder='username'
+            type='text'
+            name='username'
+          />
+          <input
+            className='standard-input'
+            aria-label='new-password-input'
+            placeholder='password'
+            type='password'
+            name='password'
+          />
+          <input
+            className='standard-input'
+            aria-label='new-email-input'
+            placeholder='email'
+            type='text'
+            name='email'
+          />
+          <button type='submit' className='standard-button'>
+            {' '}
+            Submit
+          </button>
+        </form>
+        <Link to={'/'} className='standard-button white-button'>
+          {' '}
+          Go Back
+        </Link>
       </div>
     </>
   );

@@ -26,37 +26,35 @@ const App = () => {
   };
   return (
     <>
-      <div id='login-body'>
-        <div id='login-form-parent'>
-          <h1>Please Login</h1>
-          <div>
-            <form
-              id='search-form'
-              role='form'
-              action='/api/login'
-              onSubmit={sendLogin}
-            >
-              <input
-                className='login-submit'
-                aria-label='login-username-input'
-                placeholder='username'
-                type='text'
-                name='username'
-              />
-              <input
-                className='login-submit'
-                aria-label='login-password-input'
-                placeholder='password'
-                type='password'
-                name='password'
-              />
-              <button type='submit'>Submit</button>
-            </form>
-          </div>
-          <Link to={'/createaccount'} id='create-account-rdr'>
-            New here? Create an Account
-          </Link>
-        </div>
+      <div id='standard-body'>
+        <h1>Split It & Quit It</h1>
+        <form
+          id='standard-form'
+          role='form'
+          action='/api/login'
+          onSubmit={sendLogin}
+        >
+          <input
+            className='standard-submit'
+            aria-label='login-username-input'
+            placeholder='username'
+            type='text'
+            name='username'
+          />
+          <input
+            className='standard-submit'
+            aria-label='login-password-input'
+            placeholder='password'
+            type='password'
+            name='password'
+          />
+          <button className='standard-button' type='submit'>
+            Submit
+          </button>
+        </form>
+        <Link to={'/createaccount'} id='standard-rdr'>
+          New here? Create an Account
+        </Link>
       </div>
     </>
   );
