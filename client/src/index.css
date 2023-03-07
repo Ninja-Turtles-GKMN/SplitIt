@@ -1,0 +1,59 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen';
+  margin: 0;
+}
+#login-body {
+  background-color: green;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+#error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#login-form-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: green;
+  background-color: gray;
+  border-style: solid;
+  margin-right: 30vw;
+  margin-left: 30vw;
+  /* padding-top: 20vh;
+  padding-bottom: 20vh; */
+  height: 60vh;
+}
+
+#search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+}
+
+.login-submit {
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: blue;
+  border-style: solid;
+  color: black;
+  font-weight: 500;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  height: 25px;
+  margin-bottom: 3px;
+}
+#create-account-rdr {
+  display: block;
+  margin-top: 4vh;
+  color: rgb(56, 56, 56);
+}
