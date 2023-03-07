@@ -9,14 +9,15 @@ async function connect(client) {
     await client.connect();
     console.log('Postgres client connected');
 
-    const { rows } = await client.query('SELECT * FROM USERS');
-    console.log(rows);
+    // const { rows } = await client.query('SELECT * FROM USERS');
+    // console.log(rows);
     await client.end();
   } catch (err) {
     console.log(`error + ${err}`);
-  } finally {
-    await client.close();
   }
+  // finally {
+  //   await client.close();
+  // }
 }
 
 connect(client);
@@ -26,6 +27,6 @@ module.exports = {
     console.log('executed query', text);
     console.log('params', params);
     console.log('callback', callback);
-    return pool.query(text, params, callback);
+    return client.query(text, params, callback);
   },
 };
