@@ -11,7 +11,7 @@ async function connect(client) {
 
     // const { rows } = await client.query('SELECT * FROM USERS');
     // console.log(rows);
-    await client.end();
+    // await client.end();
   } catch (err) {
     console.log(`error + ${err}`);
   }
