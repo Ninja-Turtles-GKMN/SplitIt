@@ -3,7 +3,7 @@ const sql = require('../models/splitItModels');
 console.log(sql.query);
 module.exports = {
   addExpense: (req, res, next) => {
-    const { description, event, amount, payer } = req.body;
+    const { event, data, amount, payer } = req.body;
     console.log(req.body);
     next();
   },
@@ -15,8 +15,12 @@ module.exports = {
 };
 
 /*
-{"description": "dinner",
-"event": "celebration",
+{"event": "dinner",
+"data": "2023-03-07",
 "amount":100,
 "payer":"Garrett, Nic"}
+
+{"host": "Garrett",
+"event": "celebration",
+"payer":"Nic"}
 */
