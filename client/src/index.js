@@ -4,7 +4,6 @@ import React from 'react';
 import App from './App.jsx';
 import CreateAccount from './routes/CreateAccount.jsx';
 import Error from './components/Error.js';
-import Template from './components/Template.jsx';
 import './index.css';
 import {
   createBrowserRouter,
