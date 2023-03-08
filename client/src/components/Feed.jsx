@@ -5,24 +5,27 @@ const Feed = (props) => {
 
   const arr = [];
   for (let i = 0; i < users.length; i++) {
-    if (users[i].isPaid) {
-      arr.push(<div>{users[i].username}(Already Paid)</div>);
+    if (users[i].is_paid) {
+      arr.push(
+        <div className='userlist'>{users[i].username}(Already Paid)</div>,
+      );
     } else {
+      arr.push(
+        <div className='userlist'>
+          {users[i].username}(Still owes ya dough)
+        </div>,
+      );
     }
-    arr.push(<div>{users[i].username}(Still owes ya dough)</div>);
   }
 
   return (
     <>
-      {' '}
       <div className='feed-box'>
         <div>Event: {event}</div>
         <div>Date:{date}</div>
         <div>Amount owed: {amount}</div>
-        <div>
-          Participants:
-          {arr}
-        </div>
+        <div className='userlist userBold'>Participants:</div>
+        <div className='userlist'> {arr}</div>
       </div>
       <div className='horizontal-line-divider'></div>
     </>

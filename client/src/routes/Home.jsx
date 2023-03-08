@@ -4,19 +4,18 @@ import Navbar from '../components/Navbar.jsx';
 import Feed from '../components/Feed.jsx';
 
 export default function Home() {
-  const events = useLoaderData();
-  console.log(Object.keys(events));
+  const eventsList = useLoaderData();
+
+  console.log(eventsList, 'this');
+
   const arr = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < eventsList.length; i++) {
     arr.push(
       <Feed
-        event='restaurant'
-        date='11/13/1993'
-        users={[
-          { username: 'mike', isPaid: true },
-          { username: 'nic', isPaid: false },
-        ]}
-        amount={135}
+        event={eventsList[i].event}
+        date={eventsList[i].date}
+        amount={eventsList[i].amount}
+        users={eventsList[i].users}
       />,
     );
   }
@@ -43,7 +42,7 @@ export default function Home() {
 
 //loader function
 export const eventLoader = async () => {
-  const data = await fetch('http://localhost:3000');
-  const parsed = data.json();
-  return parsed;
+  const data = await fetch('http://localhost:3000/expense');
+  const eventsList = await data.json();
+  return await eventsList;
 };
