@@ -8,13 +8,32 @@ export default function Home() {
   console.log(Object.keys(events));
   const arr = [];
   for (let i = 0; i < 10; i++) {
-    arr.push(<Feed />);
+    arr.push(
+      <Feed
+        event='restaurant'
+        date='11/13/1993'
+        users={[
+          { username: 'mike', isPaid: true },
+          { username: 'nic', isPaid: true },
+        ]}
+        amount={135}
+      />,
+    );
   }
   return (
     <>
-      <div className='homeDiv'>Hello</div>
       <Navbar></Navbar>
-      {arr}
+      <div className='homeDiv'>
+        <div className='home-left sections tall-divider'>hi</div>
+        <div className='home-center sections feed-holder'>
+          {' '}
+          <h1>LATEST</h1>
+          {arr}
+        </div>
+        <div className='home-right sections tall-divider'>
+          <div className='hi'>hi</div>
+        </div>
+      </div>
     </>
   );
 }

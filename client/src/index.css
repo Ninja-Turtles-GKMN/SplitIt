@@ -173,6 +173,39 @@ input:focus {
 }
 
 .homeDiv {
-  margin-top: 10vh;
+  margin-top: 8vh;
+  display: flex;
+  justify-content: space-between;
   /* height: 100vh; */
+}
+
+.tall-divider {
+  border-left: 1px solid rgb(220, 220, 220);
+  flex-grow: 3;
+  height: 100vh;
+  margin-left: 5px;
+  border-width: 1px;
+}
+
+.feed-holder {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-box {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  border-style: solid;
+  border-color: pink;
+  background-color: blue;
+  align-items: center;
+}
+
+.horizontal-line-divider {
+  border-bottom: 1px solid pink;
+  width: 20vw;
+  margin-left: 5px;
+  border-width: 1px;
+  font-weight: 700;
 }
