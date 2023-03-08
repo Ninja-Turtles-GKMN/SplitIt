@@ -25,6 +25,9 @@ const App = () => {
 
     if (post.status !== 200) navigate('/contacts/:contactId');
   };
+  const gitHubRedirect = fetch('/api/github', {
+    method: 'get'
+  });
 
 
   return (
@@ -55,6 +58,13 @@ const App = () => {
             Submit
           </button>
         </form>
+        {/* <button className='github oauth' onClick={() => {fetch('/api/github', {
+    method: 'get'
+  });}}> */}
+{/*   
+          Sign-In with Github
+        </button> */}
+        <a href='http://localhost:3000/github'>Sign in with Github</a>
         <Link to={'/createaccount'} id='standard-rdr'>
           New here? Create an Account
         </Link>
