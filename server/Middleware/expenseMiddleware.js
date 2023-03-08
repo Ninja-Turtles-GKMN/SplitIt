@@ -1,6 +1,20 @@
 const sql = require('../models/splitItModels');
 
 module.exports = {
+  getDebtor: async (req, res, next) => {
+    let alldebtor = await sql.query(
+      `SELECT debts.debtor_id, debts.amount_owned, debts.expense_id, users.username 
+      FROM debts, users 
+      WHERE debts.debtor_id =users.user_id
+      AND debts.is_paid =false`
+    );
+    alldebtor = alldebtor.rows;
+    console.log(alldebtor);
+
+    res.locals.alldebtor = alldebtor;
+    next();
+  },
+
   addExpense: async (req, res, next) => {
     const { host, event, date, amount, payer } = req.body;
     let payerArray = [];
@@ -48,23 +62,15 @@ module.exports = {
     }
   },
 
-  payDebt: (req, res, next) => {
-    const { payer, host, event } = req.body;
-
+  payDebt: async (req, res, next) => {
+    const { debtor_id, host, expense_id } = req.body;
     try {
-      let eventId = sql.query(
-        `SELECT expense_id FROM expenses WHERE event = '${event}'`
-      );
-      eventId = eventId.rows[0].expense_id;
-      let payerId = sql.query(
-        `SELECT user_id FROM users WHERE username = '${payer}'`
-      );
-
-      let payDebt = sql.query(
-        `UPDATE debts SET is_paid = true 
-        WHERE expense_id = '${eventId}' AND debtor_id = '${payerId}' 
+      let payDebt = await sql.query(
+        `UPDATE debts SET is_paid = true
+        WHERE expense_id = '${expense_id}' AND debtor_id = '${debtor_id}'
         RETURNING *`
       );
+      console.log(payDebt.rows);
       res.locals = payDebt.rows;
       next();
     } catch (err) {
