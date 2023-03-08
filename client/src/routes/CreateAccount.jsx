@@ -14,11 +14,18 @@ const CreateAccount = () => {
 
     console.log(username, password);
     const userBody = JSON.stringify({ username, password, email });
+    console.log(userBody);
 
-    const post = await fetch(e.target.action, {
+    const post = await fetch('http://localhost:3000/create', {
       method: 'POST',
       body: userBody,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     });
+
+    console.log('fetch complete');
 
     if (post.status !== 200) navigate('/');
   };
@@ -27,7 +34,7 @@ const CreateAccount = () => {
       <div id='standard-body'>
         <h1>Welcome. Please create your account</h1>
         <form
-          action='/api/create'
+          action='http://localhost:3000/create'
           id='standard-form'
           className='standard-form'
           role='form'
