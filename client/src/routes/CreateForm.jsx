@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function CreateForm() {
-  console.log('FGHJDCVBHNJDFVGBH');
   async function handleClick() {
     const data = new FormData(e.target);
     const event = data.get('event');
@@ -22,7 +21,7 @@ export default function CreateForm() {
   }
   return (
     <>
-      <div id='login-body' className='standard-body'>
+      <div>
         <div className='standard-title'>
           <h1>Add New Event</h1>
         </div>
