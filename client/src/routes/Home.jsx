@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <Navbar></Navbar>
       <div className='homeDiv'>
-        <div className='home-left sections tall-divider'>hi</div>
+        <div className='home-left sections tall-divider'></div>
         <div className='home-center sections feed-holder'>
           <div className='latest'>
             {' '}
@@ -33,7 +33,7 @@ export default function Home() {
           {arr}
         </div>
         <div className='home-right sections tall-divider'>
-          <div className='hi'>hi</div>
+          <div className='hi'></div>
         </div>
       </div>
     </>
