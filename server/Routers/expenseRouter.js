@@ -1,7 +1,7 @@
 const express = require('express');
 const expenseRouter = express.Router();
 // const db = require('../models/splitItModels.js');
-const expenseMiddleware = require('../Middleware/expenseMiddleware.js');
+const expenseMiddleware = require('../controllers/expenseMiddleware.js');
 
 // when page render, send get request to localhost3000/expense/ to load all EVENTS
 expenseRouter.get('/', expenseMiddleware.getAllEvents, (req, res) => {
