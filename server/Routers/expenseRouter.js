@@ -3,9 +3,9 @@ const expenseRouter = express.Router();
 // const db = require('../models/splitItModels.js');
 const expenseMiddleware = require('../Middleware/expenseMiddleware.js');
 
-// when page render, send get request to localhost3000/expense/ to load all debtors
-expenseRouter.get('/', expenseMiddleware.getDebtor, (req, res) => {
-  res.status(200).json(res.locals.alldebtor);
+// when page render, send get request to localhost3000/expense/ to load all EVENTS
+expenseRouter.get('/', expenseMiddleware.getAllEvents, (req, res) => {
+  res.status(200).json(res.locals.allEvents);
 });
 
 //Send post request to localhost3000/expense/ to add a new expense event

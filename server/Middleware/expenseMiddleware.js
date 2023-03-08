@@ -15,6 +15,25 @@ module.exports = {
     next();
   },
 
+  //new query TITLE, COST, DATE, ALL PARTICIPANTS
+  getAllEvents: async (req, res, next) => {
+    console.log('hello')
+    let allEvents = await sql.query(
+      `SELECT e.event, to_char(e.date, 'MM-DD-YYYY') as formatted_date, e.amount, 
+      string_agg(u.username, ', ' ORDER BY u.user_id) AS users 
+      FROM expenses e 
+      JOIN debts d ON e.expense_id = d.expense_id 
+      JOIN users u ON u.user_id IN (d.host_id, d.debtor_id) 
+      GROUP BY e.expense_id;`
+    );
+    allEvents = allEvents.rows;
+    console.log(allEvents);
+
+    res.locals.allEvents = allEvents;
+    next();
+  },
+
+
   addExpense: async (req, res, next) => {
     const { host, event, date, amount, payer } = req.body;
     let payerArray = [];
