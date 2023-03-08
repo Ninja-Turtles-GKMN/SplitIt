@@ -17,7 +17,7 @@ export default function Home() {
           { username: 'nic', isPaid: true },
         ]}
         amount={135}
-      />,
+      />
     );
   }
   return (
@@ -31,7 +31,7 @@ export default function Home() {
           {arr}
         </div>
         <div className='home-right sections tall-divider'>
-          <div className='hi'>hi</div>
+          <div className='createEvent'>Create New Event</div>
         </div>
       </div>
     </>
