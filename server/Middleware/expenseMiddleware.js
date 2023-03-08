@@ -13,7 +13,6 @@ module.exports = {
         let checkUser = await sql.query(
           `SELECT user_id FROM users WHERE username = '${payer[i]}'`
         );
-        console.log(checkUser.rows);
         if (checkUser.rows[0]) {
           payerArray.push(checkUser.rows[0].user_id);
         } else {
@@ -41,44 +40,36 @@ module.exports = {
         VALUES ($1, $2, $3, $4) `,
           [expense_id, hostId, payerArray[j], splitAmount]
         );
-        console.log(insertDebt);
       }
+      next();
     } catch (err) {
       console.log(err);
       //   next(err);
     }
-
-    // sql
-    //   .query(
-    //     `INSERT INTO expenses (event, date, amount )
-    //        VALUES ($1, $2, $3) RETURNING expense_id`,
-    //     [event, date, amount]
-    //   )
-    //   .then((data) => {
-    //     expense_id = data.rows[0].expense_id;
-    //   })
-    //   .catch((err) => console.log(err));
-
-    // payerArray.forEach((debtor) => {
-    //   sql
-    //     .query(
-    //       `INSERT INTO expenses (event, date, amount )
-    //        VALUES ($1, $2, $3) RETURNING expense_id`,
-    //       [event, date, amount]
-    //     )
-    //     .then((data) => {
-    //       expense_id = data.rows[0].expense_id;
-    //     })
-    //     .catch((err) => console.log(err));
-    // });
   },
 
   payDebt: (req, res, next) => {
     const { payer, host, event } = req.body;
-    sql.query(
-      `UPDATE debts SET is_paid = true WHERE debtor_id = '${host}' AND creditor_id = '${payer}'`
-    );
-    next();
+
+    try {
+      let eventId = sql.query(
+        `SELECT expense_id FROM expenses WHERE event = '${event}'`
+      );
+      eventId = eventId.rows[0].expense_id;
+      let payerId = sql.query(
+        `SELECT user_id FROM users WHERE username = '${payer}'`
+      );
+
+      let payDebt = sql.query(
+        `UPDATE debts SET is_paid = true 
+        WHERE expense_id = '${eventId}' AND debtor_id = '${payerId}' 
+        RETURNING *`
+      );
+      res.locals = payDebt.rows;
+      next();
+    } catch (err) {
+      console.log(err);
+    }
   },
 };
 
