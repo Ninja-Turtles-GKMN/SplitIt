@@ -3,15 +3,10 @@
 import React from 'react';
 import App from './App.jsx';
 import CreateAccount from './routes/CreateAccount.jsx';
-import Error from './components/Error.js';
+import Home, { eventLoader } from './routes/Home.jsx';
+import Error from './components/Error.jsx';
 import './index.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 
 const router = createBrowserRouter([
@@ -23,6 +18,11 @@ const router = createBrowserRouter([
   {
     path: 'createaccount',
     element: <CreateAccount />,
+  },
+  {
+    path: 'home',
+    element: <Home />,
+    loader: eventLoader,
   },
 ]);
 
