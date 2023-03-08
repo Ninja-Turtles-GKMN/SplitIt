@@ -3,6 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const loginRouter = require('./Routers/loginRouter');
 const expenseRouter = require('./Routers/expenseRouter');
+const createRouter = require('./Routers/createRouter'); 
 const app = express();
 const PORT = 3000;
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(cookieParser());
 
 app.use('/', expenseRouter);
 app.use('/login', loginRouter);
+app.use('/create', createRouter)
 
 app.use('*', (req, res) => {
   res.status(404).json('Invalid request: No route exists');

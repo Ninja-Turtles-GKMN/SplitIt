@@ -6,7 +6,7 @@ async function hashUsername (req, res, next) {
         await bcrypt.hash(req.body.username, saltRounds, function(err, hash) {
             console.log('hashed username',hash); 
             res.locals.hashUN = hash
-            next(); 
+            return next(); 
         });
         //sending the hashed username through res.locals
        
@@ -23,7 +23,7 @@ async function hashPassword (req, res, next) {
             bcrypt.hash(req.body.password, salt, function(err, hash) {
                 res.locals.hashPW = hash
                 console.log('hashed password', hash)
-                next();
+                return next();
             });
         });
     } 

@@ -10,13 +10,16 @@ async function compareUP (req, res, next) {
             if (result === true) {
                 console.log('correct username');
                 res.cookie(req.body.username, res.locals.hashUN, { maxAge: 86400000, httpOnly: true });
-                next();
-            } 
-            next();
+                return next();
+            } else {
+                throw {status: 401}
+            }
+           
         });
     }
-    catch {
-        return next({log: 'error with comparing hashes'})
+    catch (err) {
+        return next(err)
+        //{log: 'error with comparing hashes'}
     }
 }
 
