@@ -8,14 +8,20 @@ const app = express();
 const PORT = 3000;
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //routers
 
-app.use('/', expenseRouter);
+// for logging in a user
 app.use('/login', loginRouter);
+// create is for creating a user
 app.use('/create', createRouter)
+//for the homepage
+app.use('/expense', expenseRouter);
+app.get('/', (req, res) => {
+  return res.status(200).send('test')
+})
 
 app.use('*', (req, res) => {
   res.status(404).json('Invalid request: No route exists');
