@@ -22,7 +22,7 @@ const App = () => {
     });
 
     if (post.status !== 200) {
-      navigate('/contacts/:contactId');
+      navigate('/home');
     }
   };
 
@@ -51,7 +51,7 @@ const App = () => {
             type='password'
             name='password'
           />
-          <button className='standard-input' type='submit'>
+          <button className='standard-button' type='submit'>
             Submit
           </button>
         </form>

@@ -24,7 +24,7 @@ app.use('/create', createRouter);
 //for the homepage
 app.use('/expense', expenseRouter);
 app.get('/', (req, res) => {
-  return res.status(200).send('test');
+  return res.status(200).json({ test: 'works' });
 });
 
 app.use('*', (req, res) => {

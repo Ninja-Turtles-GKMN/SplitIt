@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
 
 body {
   font-family: 'Poppins';
@@ -73,7 +78,7 @@ input:focus {
   margin-left: 30vw;
   height: 60vh;
   width: 40vw;
-  box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .standard-button {
@@ -81,13 +86,14 @@ input:focus {
   width: 23vw;
   border-radius: 10px;
   height: 60px;
-  background-color: rgb(117, 146, 110);
+  background-color: rgb(229, 142, 210);
   cursor: pointer;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
   margin-top: 2vh;
   border-style: hidden;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 26px;
+  color: white;
 }
 
 .standard-input {
@@ -158,4 +164,5 @@ input:focus {
 .create-button {
   background-color: rgb(174, 174, 174);
   font-size: 22px;
+  color: white;
 }
