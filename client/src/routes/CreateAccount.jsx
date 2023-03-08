@@ -14,14 +14,15 @@ const CreateAccount = () => {
 
     console.log(username, password);
     const userBody = JSON.stringify({ username, password, email });
-    console.log(userBody); 
+    console.log(userBody);
 
     const post = await fetch('http://localhost:3000/create', {
       method: 'POST',
       body: userBody,
       headers: {
-        'Content-Type' : "application/json",
+        'Content-Type': 'application/json',
       },
+      credentials: 'include',
     });
 
     console.log('fetch complete');
