@@ -176,6 +176,7 @@ input:focus {
   margin-top: 8vh;
   display: flex;
   justify-content: space-between;
+  background-color: lightblue;
   /* height: 100vh; */
 }
 
@@ -198,7 +199,8 @@ input:focus {
   width: 50vw;
   border-style: solid;
   border-color: pink;
-  background-color: blue;
+  background-color: gray;
+  border-width: 3px;
   align-items: center;
 }
 
@@ -208,4 +210,9 @@ input:focus {
   margin-left: 5px;
   border-width: 1px;
   font-weight: 700;
+}
+
+.latest {
+  text-align: center;
+  font-size: 40px;
 }
