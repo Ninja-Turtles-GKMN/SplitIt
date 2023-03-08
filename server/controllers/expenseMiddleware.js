@@ -17,7 +17,7 @@ module.exports = {
 
   //new query TITLE, COST, DATE, ALL PARTICIPANTS
   getAllEvents: async (req, res, next) => {
-    console.log('hello')
+    console.log('hello');
     let allEvents = await sql.query(
       `SELECT 
       e.event, 
@@ -37,9 +37,9 @@ module.exports = {
     next();
   },
 
-
   addExpense: async (req, res, next) => {
     const { host, event, date, amount, payer } = req.body;
+    console.log('YYUUUUUUUUUUUUU', req.body);
     let payerArray = [];
     const splitAmount = amount / payer.length;
     let expense_id = 0;

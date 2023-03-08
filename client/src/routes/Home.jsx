@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import React from 'react';
 import Navbar from '../components/Navbar.jsx';
 import Feed from '../components/Feed.jsx';
+import CreateForm from './CreateForm.jsx';
 
 export default function Home() {
   const events = useLoaderData();
@@ -31,7 +32,7 @@ export default function Home() {
           {arr}
         </div>
         <div className='home-right sections tall-divider'>
-          <div className='createEvent'>Create New Event</div>
+          <CreateForm />
         </div>
       </div>
     </>
