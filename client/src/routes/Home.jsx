@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import React from 'react';
 import Navbar from '../components/Navbar.jsx';
 import Feed from '../components/Feed.jsx';
+import CreateForm from './CreateForm.jsx';
 
 export default function Home() {
   const events = useLoaderData();
@@ -17,7 +18,7 @@ export default function Home() {
           { username: 'nic', isPaid: false },
         ]}
         amount={135}
-      />,
+      />
     );
   }
   return (
@@ -34,7 +35,7 @@ export default function Home() {
           {arr}
         </div>
         <div className='home-right sections tall-divider'>
-          <div className='hi'>hi</div>
+          <CreateForm />
         </div>
       </div>
     </>
