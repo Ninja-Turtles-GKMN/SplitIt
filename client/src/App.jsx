@@ -29,7 +29,9 @@ const App = () => {
   return (
     <>
       <div id='login-body' className='standard-body'>
-        <h1>Split It & Quit It</h1>
+        <div className='standard-title'>
+          <h1>Split It & Quit It</h1>
+        </div>
         <form
           id='login-form'
           className='standard-form'

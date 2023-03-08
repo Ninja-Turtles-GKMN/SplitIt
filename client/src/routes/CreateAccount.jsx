@@ -42,7 +42,10 @@ const CreateAccount = () => {
   return (
     <>
       <div id='create-body' className='standard-body create-body'>
-        <h1>Welcome! Please create your account.</h1>
+        <div className='standard-title font-thin'>
+          <h1>Welcome! Please create your account.</h1>
+        </div>
+
         <form
           action='http://localhost:3000/create'
           id='user-create-form'

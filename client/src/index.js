@@ -4,7 +4,7 @@ import React from 'react';
 import App from './App.jsx';
 import CreateAccount from './routes/CreateAccount.jsx';
 import Home, { eventLoader } from './routes/Home.jsx';
-import Error from './components/Error.js';
+import Error from './components/Error.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';

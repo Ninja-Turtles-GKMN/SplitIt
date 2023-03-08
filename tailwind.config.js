@@ -16,10 +16,14 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
     extend: {},
-  },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
 
-  daisyui: {
-    themes: ['dark'],
+    content: ['./src/**/*.{js,jsx,ts,tsx}'],
   },
+
+  plugins: [require('@tailwindcss/typography')],
+  // plugins: [require('@tailwindcss/typography'), require('daisyui')],
+
+  // daisyui: {
+  //   themes: ['dark'],
+  // },
 };
