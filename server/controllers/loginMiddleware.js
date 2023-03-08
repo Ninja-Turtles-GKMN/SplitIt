@@ -1,16 +1,20 @@
 const sql = require('../models/splitItModels.js');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   register: (req, res, next) => {
-    const { username, password, email } = req.body;
+    //const { username, password, email } = req.body;
+    const { username, email } = req.body;
+    //const username = res.locals.hashUN
+    const password = res.locals.hashPW;
 
     //hash username, password here before insert into database
     //newUsername = username.bcrypt
     //newPassword = password.bcrypt
     sql
       .query(
-        `INSERT INTO users (username, password, email )
-       VALUES ('${username}', '${password}','${email});`
+        `INSERT INTO users (username, password, email)
+       VALUES ('${username}','${password}','${email}');`
       )
       .then((data) => {
         console.log('datarows', data.rows);
@@ -20,21 +24,34 @@ module.exports = {
   },
 
   login: (req, res, next) => {
+    console.log('in the login route');
     const { username, password } = req.body;
     //hash the username here because both username and password from database are hashed
 
     sql
       .query(`SELECT * FROM users WHERE username = '${username}'`)
       .then((data) => {
-        user = data.rows[0];
+        const user = data.rows[0];
         const userpassword = user.password;
         //compare the password from database with the password from user here, should be hashed
+        console.log('user', user);
+        console.log('in login');
         if (user && bcrypt.compare(password, userpassword)) {
           next();
         } else {
-          next('Please enter valid username and password');
+          next({
+            log: 'Incorrect username or password',
+            status: 401,
+            message: { err: 'incorrect username or password' },
+          });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        next({
+          log: 'Incorrect username or password',
+          status: 401,
+          message: { err: 'incorrect username or password' },
+        });
+      });
   },
 };

@@ -16,13 +16,21 @@ const App = () => {
     console.log(username, password);
     const loginBody = JSON.stringify({ username, password });
 
-    const post = await fetch('/api/login', {
+    const post = await fetch('http://localhost:3000/login', {
       method: 'POST',
       body: loginBody,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     });
 
-    if (post.status !== 200) {
+    console.log(post.status);
+    if (post.status === 200) {
+      console.log('routing to home!')
       navigate('/home');
+    } else {
+      navigate('/createaccount');
     }
   };
   const gitHubRedirect = fetch('/api/github', {
