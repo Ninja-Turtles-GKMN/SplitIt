@@ -14,7 +14,7 @@ export default function Home() {
         date='11/13/1993'
         users={[
           { username: 'mike', isPaid: true },
-          { username: 'nic', isPaid: true },
+          { username: 'nic', isPaid: false },
         ]}
         amount={135}
       />,
@@ -26,8 +26,11 @@ export default function Home() {
       <div className='homeDiv'>
         <div className='home-left sections tall-divider'>hi</div>
         <div className='home-center sections feed-holder'>
-          {' '}
-          <h1>LATEST</h1>
+          <div className='latest'>
+            {' '}
+            <h1>LATEST</h1>
+          </div>
+
           {arr}
         </div>
         <div className='home-right sections tall-divider'>
