@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState, createContext } from 'react';
 import { Outlet, Link, Form } from 'react-router-dom';
 import './index.css';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useEffect from 'react'
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,35 +21,37 @@ const App = () => {
       body: loginBody,
     });
 
-    if (post.status !== 200) navigate('/contacts/:contactId');
+    if (post.status !== 200) {
+      navigate('/contacts/:contactId');
+    }
   };
-
 
   return (
     <>
-      <div id='standard-body'>
+      <div id='login-body' className='standard-body'>
         <h1>Split It & Quit It</h1>
         <form
-          id='standard-form'
+          id='login-form'
+          className='standard-form'
           role='form'
           action='/api/login'
           onSubmit={sendLogin}
         >
           <input
-            className='standard-submit'
+            className='standard-input'
             aria-label='login-username-input'
             placeholder='username'
             type='text'
             name='username'
           />
           <input
-            className='standard-submit'
+            className='standard-input'
             aria-label='login-password-input'
             placeholder='password'
             type='password'
             name='password'
           />
-          <button className='standard-button' type='submit'>
+          <button className='standard-input' type='submit'>
             Submit
           </button>
         </form>
